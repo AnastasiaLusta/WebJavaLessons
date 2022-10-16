@@ -24,7 +24,6 @@
     </style>
 </head>
 <body>
-<p><a href="register.jsp">Register</a></p>
 <h2>JSP - Java Server Pages</h2>
 <p>
     1. Новый проект и запуск:
@@ -60,7 +59,7 @@
 <p>
     Основными дополнениями можно считать:
     подключение файлов и как следствие разбиение страниц
-    <jsp:include page="WEB-INF/fragment.jsp"/>
+    <jsp:include page="fragment.jsp"/>
     Условная верстка
         <% if(x < 10) { %>
     <b> x < 10 </b>
@@ -89,6 +88,6 @@
     Обеспечить защиту footer.jsp от прямого доступа,
     на главной странице поставить ссылку на форму
 </p>
-<jsp:include page="WEB-INF/footer.jsp"/>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>
