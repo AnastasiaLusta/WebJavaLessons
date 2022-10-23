@@ -1,0 +1,38 @@
+.auth-fragment {
+    background-color: moccasin;
+    /*height: 1.5em;*/
+    padding: .7ch .5em;
+    text-align: center;
+    width: 100%;
+}
+input[type=radio] {
+    visibility: hidden;
+}
+input[type=radio]:checked + label {
+    border: 1px solid salmon;
+    font-weight: bold;
+}
+label {
+    cursor: pointer;
+    font-size: larger;
+    font-variant: small-caps;
+}
+.auth-sign-up {
+    background-color: burlywood;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 5px 7px;
+    padding: 3px 4px;
+    text-decoration: none;
+    transition: background-color .2s;
+}
+.auth-sign-up:hover {
+    background-color: khaki;
+}
+.reg-error {
+    color: crimson;
+}
+.reg-ok {
+    color: forestgreen;
+}

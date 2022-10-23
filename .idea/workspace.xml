@@ -2,41 +2,29 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="WebBasics:war" />
+      <artifact name="WebBasics:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c2d649e-f76a-44c3-80e8-f2b81d57cbc7" name="Changes" comment="init">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/step/learning/HomeServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/step/learning/RegisterServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/step/learning/ViewServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/servlet.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/WebBasics.war" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/WebBasics/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/WebBasics/WEB-INF/classes/step/learning/HomeServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/WebBasics/WEB-INF/classes/step/learning/ViewServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/WebBasics/WEB-INF/footer.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/WebBasics/WEB-INF/fragment.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/WebBasics/WEB-INF/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/WebBasics/WEB-INF/servlet.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/WebBasics/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/WebBasics/img/2722809.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/step/learning/HomeServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/step/learning/ViewServlet.class" afterDir="false" />
+    <list default="true" id="9c2d649e-f76a-44c3-80e8-f2b81d57cbc7" name="Changes" comment="feat: add post method for register">
+      <change afterPath="$PROJECT_DIR$/src/main/java/step/learning/filter/DemoFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/filters.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/step/learning/HomeServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/step/learning/RegisterServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/step/learning/ViewServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/WebBasics.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/WebBasics.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/WebBasics/WEB-INF/classes/step/learning/HomeServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/WebBasics/WEB-INF/classes/step/learning/HomeServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/WebBasics/WEB-INF/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/WebBasics/WEB-INF/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/WebBasics/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/WebBasics/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/step/learning/HomeServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/step/learning/ViewServlet.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +35,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Jsp File" />
+        <option value="AnnotationType" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -57,8 +47,8 @@
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
-    <option name="FILTER_INFO" value="true" />
-    <option name="FILTER_DEBUG" value="true" />
+    <option name="FILTER_INFO" value="false" />
+    <option name="FILTER_DEBUG" value="false" />
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -78,31 +68,46 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/anastasialusta/IdeaProjects/WebBasics/src/main/webapp&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mariadb&quot;
+    ]
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
+      <recent name="$PROJECT_DIR$/src/main/java/step/learning/services" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
       <recent name="$PROJECT_DIR$/src/main/webapp" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="openRunningConfigInTab" value="true" />
   </component>
   <component name="RunManager">
     <configuration name="Tomcat 8.5.83" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.83" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="BROWSER_ID" value="e5120d43-2c3f-47ef-9f26-65e539e05186" />
       <option name="UPDATING_POLICY" value="redeploy-artifacts" />
       <deployment>
-        <artifact name="WebBasics:war">
+        <artifact name="WebBasics:war exploded">
           <settings>
-            <option name="CONTEXT_PATH" value="/WebBasics_war" />
+            <option name="CONTEXT_PATH" value="/" />
           </settings>
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="978ce213-794f-4165-a4bd-30546c0c5281" />
+        <option name="BASE_DIRECTORY_NAME" value="565ae2c7-386d-40f1-a0f2-573ceaf2b2c4" />
+        <option name="HTTP_PORT" value="8090" />
         <option name="JNDI_PORT" value="1097" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
@@ -111,7 +116,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="56117" />
+        <option name="DEBUG_PORT" value="57727" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -176,7 +181,7 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="WebBasics:war" />
+          <artifact name="WebBasics:war exploded" />
         </option>
       </method>
     </configuration>
@@ -199,7 +204,16 @@
       <workItem from="1665659921320" duration="1517000" />
       <workItem from="1665941873179" duration="1568000" />
       <workItem from="1665943726058" duration="1952000" />
-      <workItem from="1665945750546" duration="3098000" />
+      <workItem from="1665945750546" duration="3442000" />
+      <workItem from="1665997608479" duration="957000" />
+      <workItem from="1665998726625" duration="968000" />
+      <workItem from="1665999934807" duration="1047000" />
+      <workItem from="1666003358991" duration="1222000" />
+      <workItem from="1666283437911" duration="2202000" />
+      <workItem from="1666544973188" duration="2722000" />
+      <workItem from="1666548196112" duration="1969000" />
+      <workItem from="1666550255414" duration="916000" />
+      <workItem from="1666553065207" duration="352000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1665596305075</created>
@@ -215,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665596554775</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat: add post method for register">
+      <created>1665949151219</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1665949151220</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,6 +255,23 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="feat: add post method for register" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add post method for register" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/step/learning/servlet/FiltersServlet.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/WEB-INF/filters.jsp</url>
+          <line>52</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
