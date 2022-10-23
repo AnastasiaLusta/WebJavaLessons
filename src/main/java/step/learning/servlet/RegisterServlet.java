@@ -1,48 +1,98 @@
 package step.learning.servlet;
 
+import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import step.learning.dao.UserDAO;
+import step.learning.entities.User;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-//@WebServlet("/register")
 @Singleton
 public class RegisterServlet extends HttpServlet {
+    private final UserDAO userDAO ;
+
+    @Inject
+    public RegisterServlet( UserDAO userDAO ) {
+        this.userDAO = userDAO ;
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setCharacterEncoding("UTF-8");
-
-        HttpSession session = req.getSession(); // gets session
-        String loginInput = (String)req.getSession().getAttribute("loginInput"); // gets the loginInput from the session
-        String errorMessage = (String)req.getSession().getAttribute("errorMessage"); // gets the errorMessage from the session
-        req.setAttribute("loginInput", loginInput); // sets the loginInput to the request
-        if (loginInput != null) {
-            session.removeAttribute("loginInput"); // removes the loginInput from the session if it exists
+        // check if there are saved in the session data from the previous processing
+        var session = req.getSession() ; // get session
+        var regError = (String) session.getAttribute( "regError" ) ; // get error message
+        var regOk = (String) session.getAttribute( "regOk" ) ; // get ok message
+        if( regError != null ) {  // if error message exists
+            req.setAttribute( "regError", regError ) ;
+            session.removeAttribute( "regError" ) ;  // delete error message from session
         }
-        req.getRequestDispatcher("WEB-INF/register.jsp").forward(req, resp); // forwards the request to the register.jsp
+        if( regOk != null ) {  // if ok message exists
+            req.setAttribute( "regOk", regOk ) ;
+            session.removeAttribute( "regOk" ) ;  // delete ok message from session
+        }
+
+        req.setAttribute( "pageBody", "register.jsp" ) ;
+        req.getRequestDispatcher( "/WEB-INF/_layout.jsp" )
+                .forward( req, resp ) ;
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
+        HttpSession session = req.getSession() ;
 
-        String loginInput = req.getParameter("loginInput"); // gets the value of the input with the name "loginInput"
-        String passwordInput = req.getParameter("passwordInput"); // gets the value of the input with the name "passwordInput"
-        String passwordInputRep = req.getParameter("passwordInputRep"); // gets the value of the input with the name "passwordInputRep"
-        if (!(loginInput.isEmpty()) && !(passwordInput.isEmpty())){
-            if (passwordInput.equals(passwordInputRep)){
-                req.getSession().setAttribute("loginInput", loginInput); // sets the loginInput to the session
-                resp.sendRedirect(req.getRequestURI()); // redirects to the register page
-            } else {
-               resp.sendRedirect(req.getRequestURI()); // redirects to the register page
+        // get data from registration form
+        String userLogin = req.getParameter( "userLogin" ) ; // get login
+        String userPassword = req.getParameter( "userPassword" ) ; // get password
+        String confirmPassword = req.getParameter( "confirmPassword" ) ; // get password confirmation
+        String userName = req.getParameter( "userName" ) ; // get user name
+
+        // validate data
+        String errorMessage = null ;
+        try {
+            if( userLogin == null || userLogin.isEmpty() ) {
+                throw new Exception( "Login could not be empty" ) ;
             }
-        } else {
-           resp.sendRedirect(req.getRequestURI()); // redirects to the register page
+            if( ! userLogin.equals( userLogin.trim() ) ) {
+                throw new Exception( "Login could not contain trailing spaces" ) ;
+            }
+            if( userDAO.isLoginUsed( userLogin ) ) {
+                throw new Exception( "Login is already in use" ) ;
+            }
+            if( userPassword == null || userPassword.isEmpty() ) {
+                throw new Exception( "Password could not be empty" ) ;
+            }
+            if( ! userPassword.equals( confirmPassword ) ) {
+                throw new Exception( "Passwords mismatch" ) ;
+            }
+            if( userName == null || userName.isEmpty() ) {
+                throw new Exception( "Name could not be empty" ) ;
+            }
+            if( ! userName.equals( userName.trim() ) ) {
+                throw new Exception( "Name could not contain trailing spaces" ) ;
+            }
+            var user = new User() ;
+            user.setName( userName ) ;
+            user.setLogin( userLogin ) ;
+            user.setPass( userPassword ) ;
+            if( userDAO.add( user ) == null ) {
+                throw new Exception( "Server error, try later" ) ;
+            }
         }
+        catch( Exception ex ) {
+            errorMessage = ex.getMessage() ;
+        }
+        // check if there are errors
+        if( errorMessage != null ) {  // if error
+            session.setAttribute( "regError", errorMessage ) ;
+        }
+        else {  // if no errors
+            session.setAttribute( "regOk", "Registration successful" ) ;
+        }
+        resp.sendRedirect( req.getRequestURI() ) ;
     }
 }

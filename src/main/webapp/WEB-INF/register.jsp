@@ -1,36 +1,35 @@
+<%-- Форма регистрации нового пользователя --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%
-    String loginInput = (String) request.getAttribute("loginInput");
-    String errorMessage = (String) request.getAttribute("errorMessage");
+    String home = request.getContextPath();
+    String regError = (String) request.getAttribute("regError");
+    String regOk = (String) request.getAttribute("regOk");
 %>
-<html>
-<head>
-    <title>Registration page</title>
-</head>
-<body style="text-align: center; position: center; align-content: center">
-<form method="post">
-    <div class="form-group">
-        <label for="loginInput">Login: </label>
-        <input type="text" class="form-control" name="loginInput" id="loginInput" placeholder="Enter login...">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card">
+                <h2 class="card-title text-center">Register</h2>
+                <% if (regError != null) { %><h3 class="card-title text-center reg-error"><%=regError%>
+            </h3><% } %>
+                <% if (regOk != null) { %><h3 class="card-title text-center reg-ok"><%=regOk%>
+            </h3><% } %>
+                <div class="card-body py-md-4">
+                    <form method="post" action="">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="userLogin" placeholder="Login"/><br>
+                            <input type="text" class="form-control" name="userName" placeholder="Name Surname"/><br>
+                            <input type="password" class="form-control" name="userPassword" placeholder="Password"><br>
+                            <input type="password" class="form-control" name="confirmPassword"
+                                   placeholder="Confirm password">
+                        </div>
+                        <br>
+                        <div class="d-flex flex-row align-items-center justify-content-between">
+                            <button type="submit" class="btn btn-primary">Create Account</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <br>
-    <div class="form-group">
-        <label for="passwordInput">Password: </label>
-        <input type="password" class="form-control" name="passwordInput" id="passwordInput" placeholder="Password...">
-    </div>
-    <br>
-    <div class="form-group">
-        <label for="passwordInputRep">Repeat password: </label>
-        <input type="password" class="form-control" name="passwordInputRep" id="passwordInputRep" placeholder="Confirm Password...">
-    </div>
-    <br>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-<p>
-    <% if (loginInput != null) { %>
-    Welcome, <%= loginInput %>
-    <% } %>
-</p>
-<jsp:include page="footer.jsp"/>
-</body>
-</html>
+</div>

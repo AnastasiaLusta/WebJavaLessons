@@ -27,16 +27,16 @@ public class AuthFilter  implements Filter {
     }
 
     public void doFilter( ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest request = (HttpServletRequest) servletRequest ;
-        HttpServletResponse response = (HttpServletResponse) servletResponse ;
-        HttpSession session = request.getSession() ;
+        var request = (HttpServletRequest) servletRequest ;
+        var response = (HttpServletResponse) servletResponse ;
+        var session = request.getSession() ;
         // Традиционно, сначала проверяется log out
-        if( request.getParameter( "logout" ) != null ) {
-            session.removeAttribute( "AuthUserId" ) ;
-            // После выхода переадресация - на главную страницу
-            response.sendRedirect( request.getContextPath() ) ;
-            return ;
+        if (request.getParameter("logout") != null) {
+            session.removeAttribute("AuthUserId");
+            response.sendRedirect(request.getContextPath());
+            return;
         }
+
         // затем log in
         if( request.getMethod().equalsIgnoreCase( "POST" ) ) {
             if( "auth-form".equals( request.getParameter( "form-id" ) ) ) {
@@ -56,7 +56,7 @@ public class AuthFilter  implements Filter {
             }
         }
 
-        String authData = (String) session.getAttribute( "AuthError" ) ;
+        var authData = (String) session.getAttribute( "AuthError" ) ;
         if( authData != null ) {  // В сессии хранится ошибка авторизации
             request.setAttribute( "AuthError", authData ) ;
             session.removeAttribute( "AuthError" ) ;
