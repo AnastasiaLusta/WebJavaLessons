@@ -9,13 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c2d649e-f76a-44c3-80e8-f2b81d57cbc7" name="Changes" comment="feat: add hash services and guice">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/guice.jsp" afterDir="false" />
+    <list default="true" id="9c2d649e-f76a-44c3-80e8-f2b81d57cbc7" name="Changes" comment="feat: add logout">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/step/learning/filter/AuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/step/learning/filter/AuthFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/step/learning/ioc/ConfigServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/step/learning/ioc/ConfigServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/step/learning/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/step/learning/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/step/learning/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/step/learning/entities/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/step/learning/servlet/RegisterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/step/learning/servlet/RegisterServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/authfragment.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/authfragment.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/register.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,23 +53,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/anastasialusta/IdeaProjects/WebBasics/src/main/webapp/WEB-INF",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/anastasialusta/IdeaProjects/WebBasics/src/main/webapp/WEB-INF&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mariadb"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mariadb&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
@@ -205,7 +203,10 @@
       <workItem from="1666544973188" duration="2722000" />
       <workItem from="1666548196112" duration="1969000" />
       <workItem from="1666550255414" duration="916000" />
-      <workItem from="1666553065207" duration="2365000" />
+      <workItem from="1666553065207" duration="2693000" />
+      <workItem from="1666602178149" duration="340000" />
+      <workItem from="1667153950586" duration="1092000" />
+      <workItem from="1667155102360" duration="111000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1665596305075</created>
@@ -242,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666554123915</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat: add logout">
+      <created>1666555553281</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1666555553281</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,7 +272,8 @@
     <MESSAGE value="feat: add post method for register" />
     <MESSAGE value="feat: add data from database to filters.jsp" />
     <MESSAGE value="feat: add hash services and guice" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add hash services and guice" />
+    <MESSAGE value="feat: add logout" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add logout" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

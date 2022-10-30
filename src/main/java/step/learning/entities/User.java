@@ -10,6 +10,8 @@ public class User {
     private String name;
     private String salt;
 
+    private String avatar;
+
     public User() {
 
     }
@@ -19,6 +21,15 @@ public class User {
         pass  = res.getString( "pass"  ) ;
         name  = res.getString( "name"  ) ;
         salt  = res.getString( "salt"  ) ;
+        avatar = res.getString( "avatar"  ) ;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getId() {

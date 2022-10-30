@@ -6,10 +6,7 @@ import step.learning.dao.UserDAO;
 import step.learning.entities.User;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 @Singleton
@@ -89,10 +86,47 @@ public class RegisterServlet extends HttpServlet {
         // check if there are errors
         if( errorMessage != null ) {  // if error
             session.setAttribute( "regError", errorMessage ) ;
+            session.setAttribute("savedLogin", userLogin); // saves login if error
+            session.setAttribute("savedName", userName); // saves name if error
         }
         else {  // if no errors
             session.setAttribute( "regOk", "Registration successful" ) ;
         }
         resp.sendRedirect( req.getRequestURI() ) ;
     }
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        User changes = new User() ;
+        User authUser = (User) req.getAttribute( "AuthUser" ) ;
+        Part userAvatar = null ;
+        try {
+            userAvatar = req.getPart( "userAvatar" ) ;
+        } catch( Exception ignored ) { }
+/*
+Д.З. Реализовать загрузку файла-аватарки, заменить у пользователя данные
+! не забыть удалить старый файл
+ */
+        if( userAvatar != null ) {
+            resp.getWriter().print( "File '" + userAvatar.getSubmittedFileName() + "' in use" ) ;
+            return ;
+        }
+        String reply ;
+        String login = req.getParameter( "login" ) ;
+        if( login != null ) {
+            if( userDAO.isLoginUsed( login ) ) {
+                resp.getWriter().print( "Login '" + login + "' in use" ) ;
+                return ;
+            }
+            changes.setLogin( login ) ;
+        }
+        changes.setId( authUser.getId() ) ;
+        changes.setName( req.getParameter( "name" ) ) ;
+        reply =
+                userDAO.updateUser( changes )
+                        ? "OK"
+                        : "Update error" ;
+        resp.getWriter().print( reply ) ;
+    }
+
 }

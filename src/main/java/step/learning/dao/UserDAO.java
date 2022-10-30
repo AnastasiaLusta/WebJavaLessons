@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 @Singleton
@@ -144,6 +146,40 @@ public class UserDAO {
             System.out.println( sql ) ;
         }
         return null ;
+    }
+
+    public boolean updateUser( User user ) {
+        if( user == null || user.getId() == null ) return false ;
+
+        // Задание: сформировать запрос, учитывая только те данные, которые не null (в user)
+        Map<String, String> data = new HashMap<>() ;
+        if( user.getName() != null ) data.put( "name", user.getName() ) ;
+        if( user.getLogin() != null ) data.put( "login", user.getLogin() ) ;
+        if( user.getAvatar() != null ) data.put( "avatar", user.getAvatar() ) ;
+        String sql = "UPDATE Users u SET " ;
+        boolean needComma = false ;
+        for( String fieldName : data.keySet() ) {
+            sql += String.format( "%c u.`%s` = ?", ( needComma ? ',' : ' ' ), fieldName ) ;
+            needComma = true ;
+        }
+        sql += " WHERE u.`id` = ? " ;
+        if( ! needComma ) {  // не было ни одного параметра
+            return false ;
+        }
+        try( PreparedStatement prep = dataService.getConnection().prepareStatement( sql ) ) {
+            int n = 1;
+            for( String fieldName : data.keySet() ) {
+                prep.setString( n, data.get( fieldName ) ) ;
+                ++n ;
+            }
+            prep.setString( n, user.getId() ) ;
+            prep.executeUpdate() ;
+        }
+        catch( SQLException ex ) {
+            System.out.println( "UserDAO::updateUser" + ex.getMessage() ) ;
+            return false ;
+        }
+        return true ;
     }
 }
 /*

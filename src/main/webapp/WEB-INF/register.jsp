@@ -4,6 +4,9 @@
     String home = request.getContextPath();
     String regError = (String) request.getAttribute("regError");
     String regOk = (String) request.getAttribute("regOk");
+
+    String savedLogin = (String) request.getSession().getAttribute("savedLogin");
+    String savedName = (String) request.getSession().getAttribute("savedName");
 %>
 <div class="container">
     <div class="row justify-content-center">
@@ -17,11 +20,18 @@
                 <div class="card-body py-md-4">
                     <form method="post" action="">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="userLogin" placeholder="Login"/><br>
-                            <input type="text" class="form-control" name="userName" placeholder="Name Surname"/><br>
+                            <input type="text" class="form-control" name="userLogin" placeholder="Login"
+                                    <% if (savedLogin != null) { %>
+                                   value="<%=savedLogin%>"
+                                    <% } %>/><br>
+                            <input type="text" class="form-control" name="userName" placeholder="Name Surname"
+                                    <% if (savedName != null) { %>
+                                   value="<%=savedName%>"
+                                    <% } %>/><br>
                             <input type="password" class="form-control" name="userPassword" placeholder="Password"><br>
                             <input type="password" class="form-control" name="confirmPassword"
                                    placeholder="Confirm password">
+                            Attach file: <input type="file" class="form-control" name="userAvatar">
                         </div>
                         <br>
                         <div class="d-flex flex-row align-items-center justify-content-between">
