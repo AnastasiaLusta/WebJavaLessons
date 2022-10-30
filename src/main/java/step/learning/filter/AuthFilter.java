@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Singleton
-public class AuthFilter  implements Filter {
+public class AuthFilter implements Filter {
     private FilterConfig filterConfig ;
     private final UserDAO userDAO ;
 
@@ -27,17 +27,17 @@ public class AuthFilter  implements Filter {
     }
 
     public void doFilter( ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        var request = (HttpServletRequest) servletRequest ;
-        var response = (HttpServletResponse) servletResponse ;
-        var session = request.getSession() ;
-        // Традиционно, сначала проверяется log out
+        HttpServletRequest request = (HttpServletRequest) servletRequest ;
+        HttpServletResponse response = (HttpServletResponse) servletResponse ;
+        HttpSession session = request.getSession() ;
+        // check logout first
         if (request.getParameter("logout") != null) {
             session.removeAttribute("AuthUserId");
             response.sendRedirect(request.getContextPath());
             return;
         }
 
-        // затем log in
+        // after that start login process
         if( request.getMethod().equalsIgnoreCase( "POST" ) ) {
             if( "auth-form".equals( request.getParameter( "form-id" ) ) ) {
                 String userLogin    = request.getParameter( "userLogin" ) ;
@@ -56,7 +56,7 @@ public class AuthFilter  implements Filter {
             }
         }
 
-        var authData = (String) session.getAttribute( "AuthError" ) ;
+        String authData = (String) session.getAttribute( "AuthError" ) ;
         if( authData != null ) {  // В сессии хранится ошибка авторизации
             request.setAttribute( "AuthError", authData ) ;
             session.removeAttribute( "AuthError" ) ;

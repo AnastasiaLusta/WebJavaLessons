@@ -4,26 +4,30 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import step.learning.dao.UserDAO;
 import step.learning.entities.User;
+import step.learning.services.MimeService;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.util.UUID;
 
+@WebServlet("/register/")
+@MultipartConfig
 @Singleton
 public class RegisterServlet extends HttpServlet {
-    private final UserDAO userDAO ;
-
-    @Inject
-    public RegisterServlet( UserDAO userDAO ) {
-        this.userDAO = userDAO ;
-    }
+    @Inject private UserDAO userDAO ;
+    @Inject private MimeService mimeService ;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // check if there are saved in the session data from the previous processing
-        var session = req.getSession() ; // get session
-        var regError = (String) session.getAttribute( "regError" ) ; // get error message
-        var regOk = (String) session.getAttribute( "regOk" ) ; // get ok message
+        HttpSession session = req.getSession() ; // get session
+        String regError = (String) session.getAttribute( "regError" ) ; // get error message
+        String regOk = (String) session.getAttribute( "regOk" ) ; // get ok message
         if( regError != null ) {  // if error message exists
             req.setAttribute( "regError", regError ) ;
             session.removeAttribute( "regError" ) ;  // delete error message from session
@@ -46,7 +50,8 @@ public class RegisterServlet extends HttpServlet {
         String userLogin = req.getParameter( "userLogin" ) ; // get login
         String userPassword = req.getParameter( "userPassword" ) ; // get password
         String confirmPassword = req.getParameter( "confirmPassword" ) ; // get password confirmation
-        String userName = req.getParameter( "userName" ) ; // get user name
+        String userName = req.getParameter( "userName" ) ; // get username
+        Part userAvatar = req.getPart( "userAvatar" ) ; // get avatar
 
         // validate data
         String errorMessage = null ;
@@ -72,10 +77,36 @@ public class RegisterServlet extends HttpServlet {
             if( ! userName.equals( userName.trim() ) ) {
                 throw new Exception( "Name could not contain trailing spaces" ) ;
             }
-            var user = new User() ;
+
+            if( userAvatar == null ) {  // it is possible that the user has not selected an avatar
+                throw new Exception( "Form integrity violation" ) ;
+            }
+            long size = userAvatar.getSize() ;
+            String savedName = null ;
+            if( size > 0 ) {  // check if the user has selected an avatar by checking the size of the file
+                // process avatar
+                String userFilename = userAvatar.getSubmittedFileName() ;  // имя приложенного файла
+                // divide file name into name and extension
+                int dotPosition = userFilename.lastIndexOf( '.' ) ;
+                if( dotPosition == -1 ) {
+                    throw new Exception( "File extension required" ) ;
+                }
+                String extension = userFilename.substring( dotPosition ) ;
+                if( ! mimeService.isImage( extension ) ) {
+                    throw new Exception( "File type unsupported" ) ;
+                }
+                savedName = UUID.randomUUID() + extension ;
+                // saving avatar
+                String path = req.getServletContext().getRealPath( "/" ) ;  // ....\target\WebBasics\
+                File file = new File( path + "../upload/" + savedName ) ;
+                Files.copy( userAvatar.getInputStream(), file.toPath() ) ;
+            }
+
+            User user = new User() ;
             user.setName( userName ) ;
             user.setLogin( userLogin ) ;
             user.setPass( userPassword ) ;
+            user.setAvatar( savedName ) ;
             if( userDAO.add( user ) == null ) {
                 throw new Exception( "Server error, try later" ) ;
             }

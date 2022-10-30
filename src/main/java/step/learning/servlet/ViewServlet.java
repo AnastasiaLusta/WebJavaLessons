@@ -17,8 +17,8 @@ public class ViewServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setCharacterEncoding("UTF-8");
 
-        var session = request.getSession();
-        var userInput = (String) session.getAttribute("userInput");
+        HttpSession session = request.getSession();
+        String userInput = (String) session.getAttribute("userInput");
         request.setAttribute("userInput", userInput);
         if (userInput != null) {
             session.removeAttribute("userInput");

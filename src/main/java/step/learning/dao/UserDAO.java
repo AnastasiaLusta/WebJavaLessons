@@ -56,13 +56,14 @@ public class UserDAO {
         // генерируем хеш пароля
         String passHash = this.hashPassword( user.getPass(), salt ) ;
         // готовим запрос (подстановка введенных данных!!)
-        String sql = "INSERT INTO Users(`id`,`login`,`pass`,`name`,`salt`) VALUES(?,?,?,?,?)" ;
+        String sql = "INSERT INTO Users(`id`,`login`,`pass`,`name`,`salt`,`avatar`) VALUES(?,?,?,?,?,?)" ;
         try( PreparedStatement prep = connection.prepareStatement( sql ) ) {
             prep.setString( 1, id ) ;
             prep.setString( 2, user.getLogin() ) ;
             prep.setString( 3, passHash ) ;
             prep.setString( 4, user.getName() ) ;
             prep.setString( 5, salt ) ;
+            prep.setString( 6, user.getAvatar() ) ;
             prep.executeUpdate() ;
         }
         catch( SQLException ex ) {
@@ -126,20 +127,6 @@ public class UserDAO {
             ae5498df-ccbe-4e71-9e5e-73fdd2393dd4,admin,40bd001563085fc35165329ea1ff5c5ecbdbbeef,Administrator,
 
              */
-        }
-        catch( SQLException ex ) {
-            System.out.println( ex.getMessage() ) ;
-            System.out.println( sql ) ;
-        }
-        return null ;
-    }
-    public User getUserByCredentialsOld( String login, String pass ) {
-        String sql = "SELECT u.* FROM Users u WHERE u.`login`=? AND u.`pass`=?" ;
-        try( PreparedStatement prep = connection.prepareStatement( sql ) ) {
-            prep.setString( 1, login ) ;
-            prep.setString( 2, this.hashPassword( pass, "" ) ) ;
-            ResultSet res = prep.executeQuery() ;
-            if( res.next() ) return new User( res ) ;
         }
         catch( SQLException ex ) {
             System.out.println( ex.getMessage() ) ;

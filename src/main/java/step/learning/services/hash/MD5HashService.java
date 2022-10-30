@@ -9,10 +9,10 @@ public class MD5HashService implements HashService {
     @Override
     public String hash( String data ) {
         try {
-            var md = MessageDigest.getInstance( "MD5" ) ;
+            MessageDigest md = MessageDigest.getInstance( "MD5" ) ;
             md.update( data.getBytes() ) ;
-            var hash = md.digest() ;
-            var sb = new StringBuilder() ;
+            byte[] hash = md.digest() ;
+            StringBuilder sb = new StringBuilder() ;
             for( byte b : hash ) {
                 sb.append( String.format("%02x", b & 0xFF ) ) ;
             }

@@ -9,7 +9,7 @@ import javax.servlet.*;
 import java.io.IOException;
 
 @Singleton
-public class DataFilter  implements Filter {
+public class DataFilter implements Filter {
     private final DataService dataService ;
     private FilterConfig filterConfig ;
     @Inject

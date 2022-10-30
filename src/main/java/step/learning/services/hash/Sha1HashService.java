@@ -9,9 +9,9 @@ public class Sha1HashService implements HashService {
     @Override
     public String hash( String data ) {
         try {
-            var md = MessageDigest.getInstance( "SHA" ) ;
-            var hash = md.digest( data.getBytes() ) ;
-            var sb = new StringBuilder() ;
+            MessageDigest md = MessageDigest.getInstance( "SHA" ) ;
+            byte[] hash = md.digest( data.getBytes() ) ;
+            StringBuilder sb = new StringBuilder() ;
             for( byte b : hash ) {
                 sb.append( String.format("%02x", b & 0xFF ) ) ;
             }
