@@ -5,7 +5,7 @@ import com.google.inject.Injector;
 import com.google.inject.Singleton;
 import com.google.inject.servlet.GuiceServletContextListener;
 
-// Конфигурация иньектора, фильтров и сервлетов
+// Configurator of the Guice injector for the web application
 @Singleton
 public class ConfigListener extends GuiceServletContextListener {
     @Override

@@ -9,19 +9,25 @@ public class User {
     private String pass;
     private String name;
     private String salt;
-
     private String avatar;
+
+    private String email;
+
+    private String emailCode;
 
     public User() {
 
     }
-    public User( ResultSet res ) throws SQLException {
-        id    = res.getString( "id"    ) ;
-        login = res.getString( "login" ) ;
-        pass  = res.getString( "pass"  ) ;
-        name  = res.getString( "name"  ) ;
-        salt  = res.getString( "salt"  ) ;
-        avatar = res.getString( "avatar"  ) ;
+
+    public User(ResultSet res) throws SQLException {
+        id = res.getString("id");
+        login = res.getString("login");
+        pass = res.getString("pass");
+        name = res.getString("name");
+        salt = res.getString("salt");
+        avatar = res.getString("avatar");
+        email = res.getString("email");
+        emailCode = res.getString("email_code");
     }
 
     public String getAvatar() {
@@ -68,8 +74,19 @@ public class User {
         return salt;
     }
 
-    public void setSalt(String salt) {
-        this.salt = salt;
+    public String getEmail() {
+        return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmailCode() {
+        return emailCode;
+    }
+
+    public void setEmailCode(String emailCode) {
+        this.emailCode = emailCode;
+    }
 }

@@ -29,7 +29,7 @@ public class GuiceServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String toCode = req.getParameter("toHash");
 
         req.getSession().setAttribute("hashed1", "MD5: " + md5.hash(toCode));

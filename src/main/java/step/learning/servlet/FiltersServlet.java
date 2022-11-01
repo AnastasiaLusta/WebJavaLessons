@@ -5,12 +5,10 @@ import step.learning.services.DataService;
 
 import javax.inject.Singleton;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,7 +18,7 @@ import java.util.List;
 @Singleton
 public class FiltersServlet extends HttpServlet {
 
-    private DataService dataService;
+    private final DataService dataService;
 
     @Inject
     public FiltersServlet(DataService dataService) {

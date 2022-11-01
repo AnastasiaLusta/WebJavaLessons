@@ -7,9 +7,9 @@ import java.io.IOException;
 
 @Singleton
 public class CharsetFilter  implements Filter {
-    private FilterConfig filterConfig ;
+    FilterConfig filterConfig ;
 
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
         this.filterConfig = filterConfig ;
     }
 

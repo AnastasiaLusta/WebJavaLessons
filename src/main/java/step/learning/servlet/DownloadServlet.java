@@ -4,7 +4,6 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import step.learning.services.MimeService;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +16,7 @@ public class DownloadServlet extends HttpServlet {
     private MimeService mimeService ;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String requestedFilename = req.getPathInfo() ;
         // check file extension
         int dotPosition = requestedFilename.lastIndexOf( '.' ) ;
@@ -54,7 +53,6 @@ public class DownloadServlet extends HttpServlet {
                 );
                 resp.setStatus( 500 ) ;
                 resp.getWriter().print( "Server error" ) ;
-                return ;
             }
         }
         else {
