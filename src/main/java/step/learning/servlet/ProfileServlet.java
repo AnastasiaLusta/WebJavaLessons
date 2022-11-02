@@ -19,6 +19,9 @@ public class ProfileServlet extends HttpServlet {
             req.setAttribute( "pageBody", "profile-unauth.jsp" ) ;
         }
         else {
+            if (authUser.getEmailCode() == null){
+                req.setAttribute("confirm", "OK");
+            }
             req.setAttribute( "pageBody", "profile.jsp" ) ;
         }
         req.getRequestDispatcher( "/WEB-INF/_layout.jsp" ).forward( req, resp ) ;

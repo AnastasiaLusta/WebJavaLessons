@@ -3,6 +3,8 @@
 <%
     User authUser = (User) request.getAttribute("AuthUser");
     String home = request.getContextPath();
+
+    String confirm = (String)request.getAttribute("confirm");
 %>
 <div class="user-profile">
     <h1>Кабинет пользователя</h1>
@@ -20,8 +22,18 @@
             <span>Логин:</span> <b data-field-name="login"><%= authUser.getLogin() %>
         </b>
         </p>
-        <p class="profile-name">
-            <span>E-mail:</span> <b data-field-name="email"><%= authUser.getEmail() %>
+        <b>
+            <% if (confirm != null) { %>
+            <p class="profile-name">
+                <span>E-mail:</span> <b style="color: green" data-field-name="email"><%= authUser.getEmail() %>
+                    <% } else{%>
+            <p class="profile-name">
+                <span>E-mail:</span> <b style="color: red" data-field-name="email"><%= authUser.getEmail() %>
+                <p id="email-confirm-button">&#x1F4E7</p>
+                <a href="<%=home%>/checkmail/" title="Email is not confirmed, go to confirm page" >Verify</a>
+            </b></p>
+            <% } %>
+
         </b>
         </p>
         <p class="profile-fieldset-avatar">
@@ -92,8 +104,8 @@
             body: ""
         }).then(r => r.text())
             .then(t => {
-               console.log(t);
-               passwords[0].value = passwords[1].value = "";
+                console.log(t);
+                passwords[0].value = passwords[1].value = "";
             });
     }
 
@@ -106,6 +118,7 @@
     }
 
     function nameClick(e) {
+
         e.target.setAttribute("contenteditable", "true");
         e.target.focus();  // установить фокус ввода на элемент
         e.target.savedText = e.target.innerText;

@@ -3,6 +3,7 @@
 <%
     User authUser = (User) request.getAttribute("AuthUser");
     String home = request.getContextPath();
+
     String confirmOk = (String) request.getAttribute("confirm");
     String confirmError = (String) request.getAttribute("confirmError");
 %>

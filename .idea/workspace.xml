@@ -9,14 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c2d649e-f76a-44c3-80e8-f2b81d57cbc7" name="Changes" comment="feat: add photo upload to profile">
+    <list default="true" id="9c2d649e-f76a-44c3-80e8-f2b81d57cbc7" name="Changes" comment="feat: add email confirmation to add user to database">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/step/learning/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/step/learning/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/step/learning/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/step/learning/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/step/learning/ioc/ConfigServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/step/learning/ioc/ConfigServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/step/learning/servlet/HomeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/step/learning/servlet/HomeServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/step/learning/servlet/RegisterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/step/learning/servlet/RegisterServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/authfragment.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/authfragment.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/step/learning/servlet/ProfileServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/step/learning/servlet/ProfileServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/checkmail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/checkmail.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/profile.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -221,7 +217,7 @@
       <workItem from="1667165252633" duration="1180000" />
       <workItem from="1667208434526" duration="7764000" />
       <workItem from="1667283029277" duration="743000" />
-      <workItem from="1667373100216" duration="4791000" />
+      <workItem from="1667373100216" duration="7729000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1665596305075</created>
@@ -286,7 +282,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667284397513</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="feat: add email confirmation to add user to database">
+      <created>1667411596299</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1667411596299</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,17 +315,15 @@
     <MESSAGE value="feat: add session to register" />
     <MESSAGE value="feat: add MIME types" />
     <MESSAGE value="feat: add photo upload to profile" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add photo upload to profile" />
+    <MESSAGE value="feat: add email confirmation to add user to database" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add email confirmation to add user to database" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/step/learning/servlet/HomeServlet.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.google.inject.servlet.ServletDefinition$2" memberName="pathComputed" />
+        <PinnedItemInfo parentTag="com.google.inject.servlet.ServletDefinition$2" memberName="path" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>
