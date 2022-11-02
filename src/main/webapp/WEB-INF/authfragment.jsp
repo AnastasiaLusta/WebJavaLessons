@@ -24,7 +24,9 @@
     <a href="<%=home%>/profile" class="auth-profile-a"><img class="auth-fragment-avatar"
                                                             src="<%=home%>/image/<%=authUser.getAvatar()%>"
                                                             alt="<%=authUser.getLogin()%>"/></a>
-
+<% if (authUser.getEmailCode() != null) { %>
+    <a href="<%=home%>/checkmail/" title="Email is not confirmed, go to confirm page" >&#x1F4E7</a>
+<% } %>
     <a href="?logout=true">Log out</a>
     <% } %>
 </div>

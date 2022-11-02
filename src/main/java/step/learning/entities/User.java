@@ -14,6 +14,8 @@ public class User {
     private String email;
 
     private String emailCode;
+    
+    private int emailCodeAttempts;
 
     public User() {
 
@@ -28,6 +30,7 @@ public class User {
         avatar = res.getString("avatar");
         email = res.getString("email");
         emailCode = res.getString("email_code");
+        emailCodeAttempts = res.getInt("email_code_attempts");
     }
 
     public String getAvatar() {
@@ -88,5 +91,13 @@ public class User {
 
     public void setEmailCode(String emailCode) {
         this.emailCode = emailCode;
+    }
+
+    public int getEmailCodeAttempts() {
+        return emailCodeAttempts;
+    }
+
+    public void setEmailCodeAttempts(int emailCodeAttempts) {
+        this.emailCodeAttempts = emailCodeAttempts;
     }
 }

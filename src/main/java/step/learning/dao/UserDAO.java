@@ -29,6 +29,20 @@ public class UserDAO {
         this.connection = dataService.getConnection();
     }
 
+    public boolean confirmEmail(User user) {
+        if (user.getId() == null) return false;
+        String sql = "UPDATE Users SET email_code = NULL WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, user.getId());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            System.out.println("Error while confirming email: " + sql);
+            return false;
+        }
+        return true;
+    }
+
     public User getUserById(String userId) {
         String sql = "SELECT * FROM Users u WHERE u.`id` = ? ";
         try (PreparedStatement prep = connection.prepareStatement(sql)) {
@@ -57,7 +71,10 @@ public class UserDAO {
         // генерируем хеш пароля
         String passHash = this.hashPassword(user.getPass(), salt);
         // готовим запрос (подстановка введенных данных!!)
-        String sql = "INSERT INTO Users(`id`,`login`,`pass`,`name`,`salt`,`avatar`) VALUES(?,?,?,?,?,?)";
+
+        user.setEmailCode(UUID.randomUUID().toString().substring(0, 6)); // generate email confirmation code
+
+        String sql = "INSERT INTO Users(`id`,`login`,`pass`,`name`,`salt`,`avatar`, `email`, `email_code`) VALUES(?,?,?,?,?,?,?,?)";
         try (PreparedStatement prep = connection.prepareStatement(sql)) {
             prep.setString(1, id);
             prep.setString(2, user.getLogin());
@@ -65,11 +82,17 @@ public class UserDAO {
             prep.setString(4, user.getName());
             prep.setString(5, salt);
             prep.setString(6, user.getAvatar());
+            prep.setString(7, user.getEmail());
+            prep.setString(8, user.getEmailCode());
             prep.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             return null;
         }
+
+        String text = String.format("Hello! Your code is %s", user.getEmailCode());
+        emailService.send(user.getEmail(), "Email confirmation", text); // send email confirmation code
+
         return id;
     }
 
@@ -135,18 +158,31 @@ public class UserDAO {
 
         // Задание: сформировать запрос, учитывая только те данные, которые не null (в user)
         Map<String, String> data = new HashMap<>();
+        Map<String, Integer> dataNumeric = new HashMap<>();
         if (user.getName() != null) data.put("name", user.getName());
         if (user.getLogin() != null) data.put("login", user.getLogin());
         if (user.getAvatar() != null) data.put("avatar", user.getAvatar());
-        if (user.getEmail()!=null){
-            user.setEmailCode(UUID.randomUUID().toString().substring(0,6));
+        if (user.getEmail() != null) {
+            user.setEmailCode(UUID.randomUUID().toString().substring(0, 6));
             data.put("email", user.getEmail());
             data.put("email_code", user.getEmailCode());
+            dataNumeric.put("email_code_attempts", 0);
+        }
+
+        if (user.getPass()!= null){
+            String salt = hashService.hash(UUID.randomUUID().toString());
+            String passHash = this.hashPassword(user.getPass(), salt);
+            data.put("pass", passHash);
+            data.put("salt", salt);
         }
         StringBuilder sql = new StringBuilder("UPDATE Users u SET ");
         boolean needComma = false;
         for (String fieldName : data.keySet()) {
             sql.append(String.format("%c u.`%s` = ?", (needComma ? ',' : ' '), fieldName));
+            needComma = true;
+        }
+        for (String fieldName : dataNumeric.keySet()) {
+            sql.append(String.format("%c u.`%s` = %d", (needComma ? ',' : ' '), fieldName, dataNumeric.get(fieldName)));
             needComma = true;
         }
         sql.append(" WHERE u.`id` = ? ");
@@ -166,10 +202,24 @@ public class UserDAO {
             return false;
         }
 
-        if (user.getEmailCode()!= null){
-            String text = String.format("Hello, %s! Your code is %s", user.getName(), user.getEmailCode());
+        if (user.getEmailCode() != null) {
+            String text = String.format("Hello! Your code is %s", user.getEmailCode());
             emailService.send(user.getEmail(), "Email confirmation", text);
         }
+        return true;
+    }
+
+    public boolean isEmailCodeAttempts(User user){
+        if (user == null || user.getId() == null) return false;
+        String sql = "UPDATE Users u SET u.`email_code_attempts` = u.`email_code_attempts` + 1 WHERE u.`id` = ?";
+        try (PreparedStatement prep = connection.prepareStatement(sql)) {
+            prep.setString(1, user.getId());
+            prep.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            System.out.println("UserDAO::isEmailCodeAttempts"+sql);
+        }
+        user.setEmailCodeAttempts(user.getEmailCodeAttempts()+1);
         return true;
     }
 }

@@ -128,6 +128,7 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         User changes = new User();
+        String password = req.getParameter("password");
         User authUser = (User) req.getAttribute("AuthUser");
         Part userAvatar = null;
         try {
@@ -173,6 +174,7 @@ public class RegisterServlet extends HttpServlet {
         changes.setName(req.getParameter("name"));
         changes.setEmail(req.getParameter("email"));
         changes.setAvatar(savedName);
+        changes.setPass(req.getParameter("password"));
         reply =
                 userDAO.updateUser(changes)
                         ? "OK"

@@ -29,6 +29,11 @@
             <input type="file" id="avatar-input" alt="avatar-input"/>
             <input type="button" value="Сохранить" id="avatar-save-button"/>
         </p>
+        <p>
+            <label> Password: <input type="password" id="password-input" alt="password-input"/></label>
+            <label>Confirm password: <input type="password" id="password-input-confirm" alt="password-input"/></label>
+            <input type="button" value="Set password" id="password-change-button"/>
+        </p>
     </fieldset>
 </div>
 <script>
@@ -36,6 +41,10 @@
         const avatarSaveButton = document.querySelector("#avatar-save-button");
         if (!avatarSaveButton) throw "'#avatar-save-button' not found";
         avatarSaveButton.addEventListener('click', avatarSaveClick);
+
+        const passwordChangeButton = document.querySelector("#password-change-button");
+        if (!passwordChangeButton) throw "'#password-change-button' not found";
+        passwordChangeButton.addEventListener('click', passwordChangeClick);
 
         for (let nameElement of document.querySelectorAll(".profile-name b")) {
             nameElement.addEventListener("click", nameClick);
@@ -61,6 +70,30 @@
             .then(t => {
                 if (t === "Ok") location = location
                 else alert(t)
+            });
+    }
+
+    function passwordChangeClick(e) {
+        let passwords = e.target.parentNode.querySelectorAll("input[type=password]");
+        if (passwords[0].value !== passwords[1].value) {
+            alert("passwords not equals");
+            passwords[0].value = passwords[1].value = "";
+            return;
+        }
+        if (passwords[0].value.length < 3) {
+            alert("passwords length must be >= 3");
+            passwords[0].value = passwords[1].value = "";
+            return;
+        }
+        // console.log(passwords[0].value);
+        fetch("/register/?password=" + passwords[0].value, {
+            method: "PUT",
+            headers: {},
+            body: ""
+        }).then(r => r.text())
+            .then(t => {
+               console.log(t);
+               passwords[0].value = passwords[1].value = "";
             });
     }
 

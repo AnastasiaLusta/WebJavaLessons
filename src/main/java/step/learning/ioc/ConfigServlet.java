@@ -19,6 +19,7 @@ public class ConfigServlet extends ServletModule {
         serve( "/register/" ).with( RegisterServlet.class ) ;
         serve( "/image/*" ).with( DownloadServlet.class ) ;
         serve( "/profile" ).with( ProfileServlet.class ) ;
+        serve( "/checkmail/" ).with( CheckMailServlet.class ) ;
         serve( "/" ).with( HomeServlet.class ) ;
     }
 }
