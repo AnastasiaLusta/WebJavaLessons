@@ -4,7 +4,8 @@
     User authUser = (User) request.getAttribute("AuthUser");
     String home = request.getContextPath();
 
-    String confirm = (String)request.getAttribute("confirm");
+    String confirm = (String) request.getAttribute("confirm");
+    String confirmError = (String) request.getAttribute("confirmError");
 %>
 <div class="user-profile">
     <h1>Кабинет пользователя</h1>
@@ -27,12 +28,19 @@
             <p class="profile-name">
                 <span>E-mail:</span> <b style="color: green" data-field-name="email"><%= authUser.getEmail() %>
                     <% } else{%>
+                    <% if (confirmError != null) { %>
             <p class="profile-name">
                 <span>E-mail:</span> <b style="color: red" data-field-name="email"><%= authUser.getEmail() %>
-                <p id="email-confirm-button">&#x1F4E7</p>
-                <a href="<%=home%>/checkmail/" title="Email is not confirmed, go to confirm page" >Verify</a>
             </b></p>
-            <% } %>
+            <p>Too many attempts to verify. Banned!</p>
+            <% } else { %>
+            <p class="profile-name">
+                <span>E-mail:</span> <b style="color: red" data-field-name="email"><%= authUser.getEmail() %>
+            <p id="email-confirm-button">&#x1F4E7;</p>
+            <a href="<%=home%>/checkmail/" title="Email is not confirmed, go to confirm page">Verify</a>
+        </b></p>
+        <% } %>
+        <% } %>
 
         </b>
         </p>
@@ -105,6 +113,7 @@
         }).then(r => r.text())
             .then(t => {
                 console.log(t);
+                alert("Password changed");
                 passwords[0].value = passwords[1].value = "";
             });
     }

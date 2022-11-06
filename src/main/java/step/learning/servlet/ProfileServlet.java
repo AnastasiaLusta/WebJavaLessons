@@ -22,6 +22,9 @@ public class ProfileServlet extends HttpServlet {
             if (authUser.getEmailCode() == null){
                 req.setAttribute("confirm", "OK");
             }
+            if (authUser.getEmailCodeAttempts() >= 3){
+                req.setAttribute("confirmError", "Invalid code" + authUser.getEmailCodeAttempts() + " attempts");
+            }
             req.setAttribute( "pageBody", "profile.jsp" ) ;
         }
         req.getRequestDispatcher( "/WEB-INF/_layout.jsp" ).forward( req, resp ) ;
