@@ -15,7 +15,6 @@ import java.io.IOException;
 public class AuthFilter implements Filter {
     FilterConfig filterConfig;
     private final UserDAO userDAO;
-
     @Inject
     public AuthFilter(UserDAO userDAO) {
         this.userDAO = userDAO;

@@ -36,3 +36,11 @@ label {
 .reg-ok {
     color: forestgreen;
 }
+
+.task-success{
+    color: green;
+}
+
+.task-fail{
+    color: red;
+}

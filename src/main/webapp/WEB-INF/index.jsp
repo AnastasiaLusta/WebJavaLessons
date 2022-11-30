@@ -26,6 +26,7 @@
 <body>
 <h2>JSP - Java Server Pages</h2>
 <a href="filters">Filters</a>
+<a href="tasks">Exam</a>
 <p>
     1. Новый проект и запуск:
     Проект создаем по шаблону Web-App (JSP,...)

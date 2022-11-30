@@ -152,7 +152,7 @@
                             location = location;
                         } else {
                             alert(t);
-                            e.target.innerText = e.target.savedText;
+                            e.target.savedText = e.target.savedText;
                         }
                     });
             } else {

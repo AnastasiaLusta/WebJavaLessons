@@ -11,17 +11,16 @@ public class MySqlService implements DataService {
     private Connection connection ;
 
     public Connection getConnection() {
-        if( connection == null ) {
+        if (connection == null) {
             try {
-                Class.forName( "com.mysql.cj.jdbc.Driver" ) ;
+                Class.forName("com.mysql.cj.jdbc.Driver");
                 connection = DriverManager.getConnection(
-                        connectionString, dbUser, dbPass ) ;
-            }
-            catch( Exception ex ) {
-                System.out.println( "MysqlDataService::getConnection() -- " +
-                        ex.getMessage() ) ;
+                        connectionString, dbUser, dbPass);
+            } catch (Exception ex) {
+                System.out.println("MysqlDataService::getConnection() -- " +
+                        ex.getMessage());
             }
         }
-        return connection ;
+        return connection;
     }
 }

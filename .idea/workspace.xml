@@ -9,10 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c2d649e-f76a-44c3-80e8-f2b81d57cbc7" name="Changes" comment="feat: add email confirmation to profile page">
+    <list default="true" id="9c2d649e-f76a-44c3-80e8-f2b81d57cbc7" name="Changes" comment="feat: add attempts for verification">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/step/learning/servlet/ProfileServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/step/learning/servlet/ProfileServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/step/learning/filter/AuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/step/learning/filter/AuthFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/step/learning/ioc/ConfigServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/step/learning/ioc/ConfigServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/step/learning/services/MySqlService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/step/learning/services/MySqlService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +28,8 @@
       <list>
         <option value="AnnotationType" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -102,7 +106,7 @@
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="565ae2c7-386d-40f1-a0f2-573ceaf2b2c4" />
         <option name="HTTP_PORT" value="8090" />
-        <option name="JNDI_PORT" value="1097" />
+        <option name="JNDI_PORT" value="1096" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -218,7 +222,12 @@
       <workItem from="1667283029277" duration="743000" />
       <workItem from="1667373100216" duration="8056000" />
       <workItem from="1667470730576" duration="608000" />
-      <workItem from="1667766186432" duration="234000" />
+      <workItem from="1667766186432" duration="598000" />
+      <workItem from="1669139553802" duration="4295000" />
+      <workItem from="1669145048889" duration="6040000" />
+      <workItem from="1669189737748" duration="6053000" />
+      <workItem from="1669300761109" duration="3828000" />
+      <workItem from="1669825863471" duration="15269000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1665596305075</created>
@@ -297,7 +306,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667414545951</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="feat: add attempts for verification">
+      <created>1667766693651</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1667766693651</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,9 +341,24 @@
     <MESSAGE value="feat: add photo upload to profile" />
     <MESSAGE value="feat: add email confirmation to add user to database" />
     <MESSAGE value="feat: add email confirmation to profile page" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add email confirmation to profile page" />
+    <MESSAGE value="feat: add attempts for verification" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add attempts for verification" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/WEB-INF/profile.jsp</url>
+          <line>32</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/step/learning/filter/AuthFilter.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="com.google.inject.servlet.ServletDefinition$2" memberName="pathComputed" />
