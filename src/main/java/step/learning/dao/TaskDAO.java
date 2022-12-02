@@ -52,23 +52,6 @@ public class TaskDAO {
         return true;
     }
 
-//    public boolean updateTask(String id, String name, String description, boolean isDone) {
-//        String sql = "UPDATE Tasks SET name = ?, description = ?, is_done = ? WHERE id = ?";
-//        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-//            statement.setString(1, name);
-//            statement.setString(2, description);
-//            statement.setBoolean(3, isDone);
-//            statement.setString(4, id);
-//            statement.executeUpdate();
-//        } catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//            System.out.println("Error while updating task: " + sql);
-//            return false;
-//        }
-//        System.out.println("Task updated successfully");
-//        return true;
-//    }
-
     public boolean updateTask(Task task) {
         if (task.getId() == null || task == null) return false;
 

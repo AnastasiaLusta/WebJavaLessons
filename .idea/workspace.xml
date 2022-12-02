@@ -9,14 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c2d649e-f76a-44c3-80e8-f2b81d57cbc7" name="Changes" comment="feat: add attempts for verification">
+    <list default="true" id="9c2d649e-f76a-44c3-80e8-f2b81d57cbc7" name="Changes" comment="feat: add Task to the project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/step/learning/filter/AuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/step/learning/filter/AuthFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/step/learning/ioc/ConfigServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/step/learning/ioc/ConfigServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/step/learning/services/MySqlService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/step/learning/services/MySqlService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/profile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/step/learning/dao/TaskDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/step/learning/dao/TaskDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/step/learning/servlet/TaskServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/step/learning/servlet/TaskServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +223,8 @@
       <workItem from="1669145048889" duration="6040000" />
       <workItem from="1669189737748" duration="6053000" />
       <workItem from="1669300761109" duration="3828000" />
-      <workItem from="1669825863471" duration="15269000" />
+      <workItem from="1669825863471" duration="15604000" />
+      <workItem from="1669985304215" duration="943000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1665596305075</created>
@@ -313,7 +310,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667766693651</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="feat: add Task entity to the project">
+      <created>1669842801639</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1669842801639</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -342,7 +346,9 @@
     <MESSAGE value="feat: add email confirmation to add user to database" />
     <MESSAGE value="feat: add email confirmation to profile page" />
     <MESSAGE value="feat: add attempts for verification" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add attempts for verification" />
+    <MESSAGE value="feat: add Task entity to the project" />
+    <MESSAGE value="feat: add Task to the project" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add Task to the project" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
